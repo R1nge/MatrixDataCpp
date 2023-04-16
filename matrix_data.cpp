@@ -92,5 +92,7 @@ int main()
 {
     MatrixData A, B;
     float* resultA = A.getMatrix(1, 1);
+    free(resultA);
     float* resultB =  B.getMatrix(1);
+    free(resultB);
 }
