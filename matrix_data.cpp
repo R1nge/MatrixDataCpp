@@ -19,7 +19,7 @@ private:
         
         if (!file)
         {
-            throw std::invalid_argument("No such file directory");
+            throw invalid_argument("No such file directory");
         }
 
         for (int i = 0; i < 200; ++i) // sum of number X and Y = 200
