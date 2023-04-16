@@ -10,7 +10,9 @@ private:
 
     float* readFileData()
     {
-        float data[200];
+        constexpr size_t size = 200;
+        float data[size];
+        float* mas = (float*) malloc(size);
         ifstream file;
         file.open("C:\\data_for_lab.txt");
         
@@ -24,7 +26,7 @@ private:
             file >> data[i];
         }
         
-        return &data[0];
+        return &mas[0];
     }
 
     float getSquareSum(float data[]) // sum of squared values of x for matrx A (1;1)
@@ -68,23 +70,21 @@ public:
     float* getMatrix(int a, int b)
     {
         constexpr size_t size = 4;
-        float A[size];
-        float* mas = (float*) malloc(size);
+        float* A = (float*) malloc(size);
         A[2] = getSum(readFileData(), 0);
         A[1] = getSum(readFileData(), 0);
         A[0] = getSquareSum(readFileData());
         A[3] = 100;
-        return &mas[0];
+        return &A[0];
     }
     
     float* getMatrix(int a)
     {
         constexpr size_t size = 2;
-        float B[size];
-        float* mas = (float*) malloc(size);
+        float* B = (float*) malloc(size);
         B[0] = getXY(readFileData());
         B[1] = getSum(readFileData(), 50);
-        return &mas[0];
+        return &B[0];
     }
 };
 
