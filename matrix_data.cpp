@@ -8,7 +8,7 @@ class MatrixData
 {
 private:
 
-    float* readFileData()  // read data from file
+    float* readFileData()
     {
         float data[200];
         ifstream file;
@@ -19,12 +19,12 @@ private:
             throw std::invalid_argument("No such file directory");
         }
 
-        for (int i = 0; i < 200; ++i) // summ of number X and Y = 200
+        for (int i = 0; i < 200; ++i) // sum of number X and Y = 200
         {
             file >> data[i];
         }
         
-        return nullptr;
+        return &data[0];
     }
 
     float getSquareSum(float data[]) // sum of squared values of x for matrx A (1;1)
@@ -57,7 +57,7 @@ private:
         
         for (int i = 0; i < 100; ++i)
         {
-            xy += data[i] * data[99 + i]; //Index out of range exeption
+            xy += data[i] * data[99 + i]; //Index out of range exception
         }
         
         return xy;
