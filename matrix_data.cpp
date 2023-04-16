@@ -72,6 +72,11 @@ public:
     {
         readFileData();
     }
+    
+    ~MatrixData()
+    {
+        free(fileData);
+    }
 
     float* getMatrix(int a, int b)
     {
