@@ -13,7 +13,6 @@ private:
     void readFileData()
     {
         constexpr size_t size = 200;
-        float data[size];
         float* mas = (float*) malloc(size);
         ifstream file;
         file.open("C:\\data_for_lab.txt");
@@ -25,7 +24,7 @@ private:
 
         for (int i = 0; i < 200; ++i) // sum of number X and Y = 200
         {
-            file >> data[i];
+            file >> mas[i];
         }
         
         fileData = &mas[0];
