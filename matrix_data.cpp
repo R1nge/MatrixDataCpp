@@ -8,7 +8,9 @@ class MatrixData
 {
 private:
 
-    float* readFileData()
+    float* fileData;
+
+    void readFileData()
     {
         constexpr size_t size = 200;
         float data[size];
@@ -26,7 +28,7 @@ private:
             file >> data[i];
         }
         
-        return &mas[0];
+        fileData = &mas[0];
     }
 
     float getSquareSum(float data[]) // sum of squared values of x for matrx A (1;1)
@@ -67,13 +69,18 @@ private:
     
 public:
 
+    MatrixData()
+    {
+        readFileData();
+    }
+
     float* getMatrix(int a, int b)
     {
         constexpr size_t size = 4;
         float* A = (float*) malloc(size);
-        A[2] = getSum(readFileData(), 0);
-        A[1] = getSum(readFileData(), 0);
-        A[0] = getSquareSum(readFileData());
+        A[2] = getSum(fileData, 0);
+        A[1] = getSum(fileData, 0);
+        A[0] = getSquareSum(fileData);
         A[3] = 100;
         return &A[0];
     }
@@ -82,8 +89,8 @@ public:
     {
         constexpr size_t size = 2;
         float* B = (float*) malloc(size);
-        B[0] = getXY(readFileData());
-        B[1] = getSum(readFileData(), 50);
+        B[0] = getXY(fileData);
+        B[1] = getSum(fileData, 50);
         return &B[0];
     }
 };
